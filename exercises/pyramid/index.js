@@ -16,16 +16,17 @@
 
 function pyramid(n) {
     for (let row = 0; row < n; row++) {
-        let str = "";
-        for (let col = 0; col < 2 * n - 1; col++) {
-            const mid = Math.floor((2*n-1) / 2);
+        let str ="";
+        for (let col = 0; col < 2*n-1; col++) {
+            const mid = Math.floor((2 * n - 1) / 2);
             if (col >= mid - row && col <= mid + row) {
-                str += "#";
-            } else {
-                str += " ";
+                str += "#"
+            }
+            else {
+                str += " "
             }
         }
-        console.log(str);
+        console.log(str)
     }
 }
 

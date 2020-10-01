@@ -10,21 +10,21 @@
 
 function anagrams(strA, strB) {
     if (strA.length !== strB.length) return false;
-    const objA = objectify(strA)
-    const objB = objectify(strB)
+    const objA = objectify(strA);
+    const objB = objectify(strB);
 
-    for (let key in objB) {
-        if (objA[key] !== objB[key]) return false;
+    for (let key in objA) {
+        if (objA[key] !== objB[key]) return false
     }
     return true;
 }
 
 function objectify(str) {
     const obj = {};
-    for (let char of str.toLowerCase()) {
+    for (let char of str) {
         obj[char] = obj[char] + 1 || 1;
     }
-    return obj;
 
+    return obj;
 }
 module.exports = anagrams;

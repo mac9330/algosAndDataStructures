@@ -10,21 +10,23 @@
 
 function chunk(array, size) {
     const matrix = [];
-    let inner = [];
-    array.forEach((el, idx) => {
-        if ((idx + 1) % size === 0) {
-            debugger
-            inner.push(el);
-            matrix.push(inner);
-            inner = [];
-        }
-        else {
-            inner.push(el);
-        }
+    let nested = [];
+    array.forEach((ele, i) => {
+       if ((i + 1) % size === 0) {
+            nested.push(ele);
+            matrix.push(nested);
+            nested = [];
+       } else {
+           nested.push(ele);
+           debugger
+       }
     });
-    inner.length ? matrix.push(inner) : null;
+    nested.length ? matrix.push(nested) : null;
+    console.log(matrix)
     return matrix;
 }
+
+chunk([1,2,3], 2)
 
 
 module.exports = chunk;
