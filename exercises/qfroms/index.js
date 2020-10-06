@@ -13,7 +13,46 @@
 //     q.remove(); // returns 2
 
 const Stack = require('./stack');
+// 1, 2, 3
+// 3, 2, 1
 
-class Queue {}
+// first in last out stack
+// first in first out queue
+
+
+class Queue {
+    constructor() {
+        this.stackOne = new Stack();
+        this.stackTwo = new Stack();
+    }
+
+    add(ele) {
+        this.stackOne.push(ele);
+    }
+
+    remove() {
+        while (this.stackOne.peek()) {
+            this.stackTwo.push(this.stackOne.pop());
+        }
+
+        const ele = this.stackTwo.pop();
+        while (this.stackTwo.peek()) {
+            this.stackOne.push(this.stackTwo.pop());
+        }
+
+        return ele;
+    }
+
+    peek() {
+        while (this.stackOne.peek()) {
+            this.stackTwo.push(this.stackOne.pop());
+        }
+        const peek = this.stackTwo.peek();
+        while (this.stackTwo.peek()) {
+            this.stackOne.push(this.stackTwo.pop());
+        }
+        return peek;
+    }
+}
 
 module.exports = Queue;
