@@ -11,6 +11,14 @@
 // 4       5
 // Answer: [1, 3, 2]
 
-function levelWidth(root) {}
+function levelWidth(root) {
+    const tree = [root];
+    result = [1,];
+    i = 1;
+    while (tree.length) {
+        result[i] = result[i] + tree[i-1].children
+    }
+    
+}
 
 module.exports = levelWidth;
