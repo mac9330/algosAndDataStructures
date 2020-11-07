@@ -16,11 +16,9 @@ class Node {
         this.data = data;
         this.left = null;
         this.right = null;
-        this.insert = this.insert.bind(this);
     }
     // recursive solution
     insert(data, node=this) {
-        //base case
         if (data < node.data) {
             if (node.left) {
                 this.insert(data, node.left)
@@ -58,19 +56,34 @@ class Node {
     //     }
     // }
 
+
+    //recusive solution
     contains(data) {
-        let node = this;
-        while(node) {
-            if (data < node.data) {
-                node = node.left;
-            } else if (data > node.data) {
-                node = node.right;
-            } else {
-                return node;
-            }
+        if (data === this.data) {
+            return this;
+        }
+        if (data < this.data && this.left) {
+            return this.left.contains(data);
+        } else if (data > this.data && this.right) {
+            return this.right.contains(data); 
         }
         return null;
     }
+
+    // iterative solution
+    // contains(data) {
+    //     let node = this;
+    //     while(node) {
+    //         if (data < node.data) {
+    //             node = node.left;
+    //         } else if (data > node.data) {
+    //             node = node.right;
+    //         } else {
+    //             return node;
+    //         }
+    //     }
+    //     return null;
+    // }
 }
 
 module.exports = Node;
