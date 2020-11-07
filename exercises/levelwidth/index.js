@@ -12,13 +12,20 @@
 // Answer: [1, 3, 2]
 
 function levelWidth(root) {
-    const tree = [root];
-    result = [1,];
-    i = 1;
-    while (tree.length) {
-        result[i] = result[i] + tree[i-1].children
+    const tree = [root, "s"];
+    const result = [0];
+
+    while (tree.length > 1) {
+        if (tree[0] === "s") {
+            tree.shift();
+            tree.push("s");
+            result.unshift(0);
+        }
+            if (tree[0].children) tree.push(...tree[0].children);
+            tree.shift();
+            result[0]++;
     }
-    
+    return result.reverse();
 }
 
 module.exports = levelWidth;
